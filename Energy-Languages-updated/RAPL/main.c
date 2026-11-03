@@ -41,10 +41,10 @@ int main (int argc, char **argv)
   strcpy(test,argv[3]);
   printf("test %s\n\n",test);
   //ip address
-  pc_identifier = 54; //last 2 digits of ip
+  pc_identifier = 54; //last digits of ip
   
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%d\" --ch1", test, pc_identifier);
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%d\" --ch1", test, pc_identifier);
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start, %s, %d\" --ch1", test, pc_identifier);
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut, %s, %d\" --ch1", test, pc_identifier);
   //ntimes = atoi (argv[2]);
   
 
