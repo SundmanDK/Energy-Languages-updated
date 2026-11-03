@@ -54,8 +54,8 @@ int main (int argc, char **argv)
   ioctl(fd, SIOCGIFADDR, &ifr);
   close(fd);
   
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%d\" --ch1", test, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%d\" --ch1", test, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
   //ntimes = atoi (argv[2]);
   
 
