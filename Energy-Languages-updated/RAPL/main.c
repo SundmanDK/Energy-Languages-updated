@@ -22,6 +22,8 @@ int main (int argc, char **argv)
   char start_msg[500];
   char end_msg[500];
   char hostbuffer[256];
+  struct hostent *host_entry;
+  struct in_addr **addr_list;
   char ip_address[256];
 #ifdef RUNTIME
   //clock_t begin, end;
@@ -46,7 +48,9 @@ int main (int argc, char **argv)
   printf("test %s\n\n",test);
   //ip address
   gethostname(hostbuffer, sizeof(hostbuffer));
-  ip_address = inet_ntoa(gethostbyname(hostbuffer));
+  host_entry = gethostbyname(hostbuffer);
+  addr_list = (struct in_addr **)host_entry->h_addr_list
+  ip_address = inet_ntoa(*addr_list[0]);
   sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, ip_address);
   sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, ip_address);
   //ntimes = atoi (argv[2]);
