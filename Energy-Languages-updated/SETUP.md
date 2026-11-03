@@ -16,9 +16,9 @@ sudo apt install gcc
 sudo apt install stress-ng
 
 ### python:
-apt-get update
+sudo apt-get update
 
-apt-get install -y python3-full python3-pip
+sudo apt-get install -y python3-full python3-pip
 
 python3 -version
 ## in project directory 
