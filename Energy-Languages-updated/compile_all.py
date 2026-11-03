@@ -1,6 +1,5 @@
 import sys, os
 from subprocess import call, check_output, Popen, PIPE
-from lazyme.string import color_print
 
 path = '.'
 action = 'compile'
@@ -25,15 +24,15 @@ def main():
         if pipes.returncode != 0:
           # an error happened!
           err_msg = "%s. Code: %s" % (std_err.strip(), pipes.returncode)
-          color_print('[E] Error on ' + root + ': ', color='red', bold=True)
+          print('[E] Error on ' + root + ': ')
           print(err_msg)
         elif len(std_err):
           # return code is 0 (no error), but we may want to
           # do something with the info on std_err
           # i.e. logger.warning(std_err)
-          color_print('[OK]', color='green')
+          print('[OK]')
         else:
-          color_print('[OK]', color='green')
+          print('[OK]')
       if action == 'measure':
         call(['sleep', '5'])
 
@@ -41,13 +40,13 @@ if __name__ == '__main__':
   if len(sys.argv) == 2:
     act = sys.argv[1]
     if (act == 'compile') | (act == 'run') | (act == 'clean') | (act == 'measure'):
-      color_print('Performing \"' + act + '\" action...', color='yellow', bold=True)
+      print('Performing \"' + act + '\" action...')
       action = act
     else:
-      color_print('Error: Unrecognized action \"' + act + '\"', color='red')
+      print('Error: Unrecognized action \"' + act + '\"')
       sys.exit(1)
   else:
-    color_print('Performing \"compile\" action...', color='yellow', bold=True)
+    print('Performing \"compile\" action...')
     action = 'compile'
   
   main()
