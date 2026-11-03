@@ -3,12 +3,15 @@
 #include <stdio.h>
 #include <sys/time.h>
 #include <math.h>
+
 #include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+
+#include <sys/types.h>
 #include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netdb.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
+#include <net/if.h>
+
 #include "rapl.h"
 
 #define RUNTIME 1
@@ -21,10 +24,8 @@ int main (int argc, char **argv)
   int  i=0;
   char start_msg[500];
   char end_msg[500];
-  char hostbuffer[256];
-  struct hostent *host_entry;
-  struct in_addr **addr_list;
-  char ip_address[256];
+  int fd;
+  struct ifreq ifr;
 #ifdef RUNTIME
   //clock_t begin, end;
   double time_spent;
@@ -47,12 +48,14 @@ int main (int argc, char **argv)
   strcpy(test,argv[3]);
   printf("test %s\n\n",test);
   //ip address
-  gethostname(hostbuffer, sizeof(hostbuffer));
-  host_entry = gethostbyname(hostbuffer);
-  addr_list = (struct in_addr **)host_entry->h_addr_list;
-  //ip_address = ;
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, inet_ntoa(*addr_list[1]));
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, inet_ntoa(*addr_list[1]));
+  fd = socket(AF_INET, SOCK_DGRAM, 0);
+  ifr.ifr_addr.sa_family = AF_INET;
+  strncpy(ifr.ifr_name, "eth0", IFNAMSIZ-1);
+  ioctl(fd, SIOCGIFADDR, &ifr);
+  close(fd);
+  
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
   //ntimes = atoi (argv[2]);
   
 
