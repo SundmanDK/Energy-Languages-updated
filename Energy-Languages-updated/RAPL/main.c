@@ -43,8 +43,8 @@ int main (int argc, char **argv)
   //ip address
   pc_identifier = 54; //last 2 digits of ip
   
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%d\" --ch1", test, ip_addr);
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%d\" --ch1", test, ip_addr);
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%d\" --ch1", test, pc_identifier);
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%d\" --ch1", test, pc_identifier);
   //ntimes = atoi (argv[2]);
   
 
