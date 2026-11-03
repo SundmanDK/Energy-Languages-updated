@@ -5,7 +5,7 @@ git clone https://github.com/SundmanDK/Energy-Languages-updated.git
 
 2. Make sigmark executable
 
-sudo chmod -x sigmark-0.4.9-linux
+sudo chmod +x sigmark-0.4.9-linux
 
 3. Install dependencies
 
