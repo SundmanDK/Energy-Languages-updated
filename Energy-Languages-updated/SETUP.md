@@ -1,4 +1,4 @@
-#### Setup instructions:
+# Setup instructions:
 1. Clone repo
 
 git clone https://github.com/SundmanDK/Energy-Languages-updated.git
@@ -15,17 +15,17 @@ sudo apt install gcc
 
 sudo apt install stress-ng
 
-## python:
+### python:
 apt-get update
 
 apt-get install -y python3-full python3-pip
 
 python3 -version
-# in project directory 
+## in project directory 
 python3 -m venv /tmp/vxpy
 
 /tmp/vxpy/bin/python -m pip --version
-# two version calls should give same result
+### two version calls should give same result
 
 4. Assign pc identifier to output message
 
