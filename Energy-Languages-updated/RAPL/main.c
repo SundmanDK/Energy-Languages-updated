@@ -31,7 +31,7 @@ int main (int argc, char **argv)
   char end_msg[500];
   int fd;
   struct ifreq ifr;
-  int ip_addr;
+  char *ip_addr;
 #ifdef RUNTIME
   //clock_t begin, end;
   double time_spent;
