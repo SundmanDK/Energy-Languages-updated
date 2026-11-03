@@ -49,7 +49,7 @@ int main (int argc, char **argv)
   //ip address
   gethostname(hostbuffer, sizeof(hostbuffer));
   host_entry = gethostbyname(hostbuffer);
-  addr_list = (struct in_addr **)host_entry->h_addr_list
+  addr_list = (struct in_addr **)host_entry->h_addr_list;
   ip_address = inet_ntoa(*addr_list[0]);
   sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, ip_address);
   sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, ip_address);
