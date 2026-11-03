@@ -12,6 +12,11 @@
 #include <netinet/in.h>
 #include <net/if.h>
 
+#include <stdlib.h>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+
 #include "rapl.h"
 
 #define RUNTIME 1
