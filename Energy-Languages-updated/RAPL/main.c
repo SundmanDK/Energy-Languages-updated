@@ -6,17 +6,6 @@
 
 #include <string.h>
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <sys/ioctl.h>
-#include <netinet/in.h>
-#include <net/if.h>
-
-#include <stdlib.h>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <netdb.h>
-
 #include "rapl.h"
 
 #define RUNTIME 1
@@ -29,9 +18,7 @@ int main (int argc, char **argv)
   int  i=0;
   char start_msg[500];
   char end_msg[500];
-  int fd;
-  struct ifreq ifr;
-  char *ip_addr;
+  int pc_identifier;
 #ifdef RUNTIME
   //clock_t begin, end;
   double time_spent;
@@ -54,15 +41,10 @@ int main (int argc, char **argv)
   strcpy(test,argv[3]);
   printf("test %s\n\n",test);
   //ip address
-  fd = socket(AF_INET, SOCK_DGRAM, 0);
-  ifr.ifr_addr.sa_family = AF_INET;
-  strncpy(ifr.ifr_name, "enp0s3116", IFNAMSIZ-1);
-  ioctl(fd, SIOCGIFADDR, &ifr);
-  ip_addr = inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr);
-  close(fd);
+  pc_identifier = 54; //last 2 digits of ip
   
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, ip_addr);
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, ip_addr);
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%d\" --ch1", test, ip_addr);
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%d\" --ch1", test, ip_addr);
   //ntimes = atoi (argv[2]);
   
 
