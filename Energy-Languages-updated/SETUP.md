@@ -7,15 +7,20 @@ sudo chmod -x sigmark-0.4.9-linux
 
 3. Install dependencies
 sudo apt install make
+
 sudo apt install gcc
+
 sudo apt install stress-ng
 
 ## python:
 apt-get update
+
 apt-get install -y python3-full python3-pip
+
 python3 -version
 # in project directory 
 python3 -m venv /tmp/vxpy
+
 /tmp/vxpy/bin/python -m pip --version
 # two version calls should give same result
 
