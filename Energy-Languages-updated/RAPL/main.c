@@ -51,8 +51,8 @@ int main (int argc, char **argv)
   host_entry = gethostbyname(hostbuffer);
   addr_list = (struct in_addr **)host_entry->h_addr_list;
   //ip_address = ;
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, inet_ntoa(*addr_list[0]));
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, inet_ntoa(*addr_list[0]));
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start,%s,%s\" --ch1", test, inet_ntoa(*addr_list[1]));
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut,%s,%s\" --ch1", test, inet_ntoa(*addr_list[1]));
   //ntimes = atoi (argv[2]);
   
 
