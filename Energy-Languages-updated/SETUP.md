@@ -20,7 +20,7 @@ sudo apt-get update
 
 sudo apt-get install -y python3-full python3-pip
 
-python3 -version
+python3 --version
 ## in project directory 
 python3 -m venv /tmp/vxpy
 
