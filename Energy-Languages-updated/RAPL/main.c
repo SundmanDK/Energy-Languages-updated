@@ -37,7 +37,7 @@ int main (int argc, char **argv)
   pc_identifier = 54; //last digits of ip
   strcpy(language,argv[2]);
   strcat(language,"-");
-  strcat(language,itoba(pc_identifier));
+  snprintf(language, 2, %d,pc_identifier);
   strcat(language,".csv");
   strcat(path,language);
   //Test name
