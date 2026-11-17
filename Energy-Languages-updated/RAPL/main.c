@@ -19,6 +19,7 @@ int main (int argc, char **argv)
   char start_msg[500];
   char end_msg[500];
   int pc_identifier;
+  char * pc_str;
 #ifdef RUNTIME
   //clock_t begin, end;
   double time_spent;
@@ -37,7 +38,8 @@ int main (int argc, char **argv)
   pc_identifier = 54; //last digits of ip
   strcpy(language,argv[2]);
   strcat(language,"-");
-  snprintf(language, 255, "%d",pc_identifier);
+  snprintf(pc_str, , "%d",pc_identifier);
+  strcat(language, pc_str);
   strcat(language,".csv");
   strcat(path,language);
   //Test name
