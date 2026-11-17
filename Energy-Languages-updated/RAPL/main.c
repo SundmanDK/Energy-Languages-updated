@@ -34,14 +34,17 @@ int main (int argc, char **argv)
   strcpy(path,"../");
 
 
+  pc_identifier = 54; //last digits of ip
   strcpy(language,argv[2]);
+  strcat(language,"-");
+  strcat(language,itoba(pc_identifier));
   strcat(language,".csv");
   strcat(path,language);
   //Test name
   strcpy(test,argv[3]);
   printf("test %s\n\n",test);
   //ip address
-  pc_identifier = 54; //last digits of ip
+ 
   
   sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start, %s, %d\" --ch1", test, pc_identifier);
   sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut, %s, %d\" --ch1", test, pc_identifier);
@@ -57,7 +60,7 @@ int main (int argc, char **argv)
   for (i = 0 ; i < ntimes ; i++)
     {  
  
-    	fprintf(fp,"%s ; ",test);
+    	fprintf(fp,"%d,%s,",pc_identifier,test);
  	
 	      
 		#ifdef RUNTIME
