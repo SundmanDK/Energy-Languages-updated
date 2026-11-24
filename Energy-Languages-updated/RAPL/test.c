@@ -28,7 +28,10 @@ main(int argc, char *argv[])
                 printf("getnameinfo() failed: %s\n", gai_strerror(s));
                 exit(EXIT_FAILURE);
             }
-            printf("<Interface>: %s \t <Address> %s\n", ifa->ifa_name, host);
+            if (ifa->ifa_name == "enp0s31f6"){
+                printf("<Interface>: %s \t <Address> %s\n", ifa->ifa_name, host);
+                break;
+            }
         }
     }
     return 0;
