@@ -1,35 +1,35 @@
-#include <stdio.h>
-#include <sys/time.h>
-#include <math.h>
-
-#include <string.h>
-#include <sys/types.h>
+#include <arpa/inet.h>
 #include <sys/socket.h>
-#include <sys/ioctl.h>
-#include <netinet/in.h>
-#include <net/if.h>
+#include <netdb.h>
+#include <ifaddrs.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-#include <string.h>
+int
+main(int argc, char *argv[])
+{
+    struct ifaddrs *ifaddr, *ifa;
+    int family, s;
+    char host[NI_MAXHOST];
 
-#include "rapl.h"
+    if (getifaddrs(&ifaddr) == -1) {
+        perror("getifaddrs");
+        exit(EXIT_FAILURE);
+    }
 
-#define RUNTIME 1
+    for (ifa = ifaddr; ifa != NULL; ifa = ifa->ifa_next) {
+        family = ifa->ifa_addr->sa_family;
 
-int main (int argc, char **argv) {
-    int fd;
-    struct ifreq ifr;
-
-    fd = socket(AF_INET, SOCK_DGRAM, 0);
-
-    ifr.ifr_addr.sa_family = AF_INET;
-
-    snprintf(ifr.ifr_name, IFNAMSIZ, "eth0");
-
-    ioctl(fd, SIOCGIFADDR, &ifr);
-
-    /* and more importantly */
-    printf("%s\n", inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
-
-    close(fd);
-
+        if (family == AF_INET) {
+            s = getnameinfo(ifa->ifa_addr, sizeof(struct sockaddr_in),
+                                           host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
+            if (s != 0) {
+                printf("getnameinfo() failed: %s\n", gai_strerror(s));
+                exit(EXIT_FAILURE);
+            }
+            printf("<Interface>: %s \t <Address> %s\n", ifa->ifa_name, host);
+        }
+    }
+    return 0;
 }
