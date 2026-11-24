@@ -11,6 +11,10 @@
 int
 main(int argc, char *argv[])
 {
+// get ip solution taken from:
+// https://stackoverflow.com/questions/1570511/c-code-to-get-the-ip-address?noredirect=1&lq=1
+// and modified for our use.
+// only works when enp0s31f6 ip is visable
     struct ifaddrs *ifaddr, *ifa;
     int family, s;
     char host[NI_MAXHOST];
