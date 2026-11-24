@@ -31,7 +31,7 @@ main(int argc, char *argv[])
                 exit(EXIT_FAILURE);
             }
             if (0 == strcmp(ifa->ifa_name, "enp0s31f6")){
-                printf((char *)host + strlen(str) - 2);
+                printf((char *)host + strlen(host) - 2);
                 break;
             }
         }
