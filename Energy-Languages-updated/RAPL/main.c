@@ -81,8 +81,8 @@ int main (int argc, char **argv)
   //ip address
  
   
-  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start, %s, %d\" --ch1", test, pc_identifier);
-  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut, %s, %d\" --ch1", test, pc_identifier);
+  sprintf(start_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"start, %s, %s\" --ch1", test, pc_identifier);
+  sprintf(end_msg, "../.././sigmark-0.4.9-linux --ip 192.168.50.101:8000 --msg \"slut, %s, %s\" --ch1", test, pc_identifier);
   //ntimes = atoi (argv[2]);
   
 
@@ -95,7 +95,7 @@ int main (int argc, char **argv)
   for (i = 0 ; i < ntimes ; i++)
     {  
  
-    	fprintf(fp,"%d,%s,",pc_identifier,test);
+    	fprintf(fp,"%s,%s,",pc_identifier,test);
  	
 	      
 		#ifdef RUNTIME
