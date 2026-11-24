@@ -30,7 +30,7 @@ main(int argc, char *argv[])
                 printf("getnameinfo() failed: %s\n", gai_strerror(s));
                 exit(EXIT_FAILURE);
             }
-            if (0 == strcmp(ifa->ifa_name "enp0s31f6")){
+            if (0 == strcmp(ifa->ifa_name, "enp0s31f6")){
                 printf("<Interface>: %s \t <Address> %s\n", ifa->ifa_name, host);
                 break;
             }
