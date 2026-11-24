@@ -62,7 +62,7 @@ int main (int argc, char **argv)
           }
       }
   }
-  printf(pc_identifier);
+  printf((char *)pc_identifier);
   FILE * fp;
 
   //Run command
