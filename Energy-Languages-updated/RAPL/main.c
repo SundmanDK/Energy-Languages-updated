@@ -25,7 +25,7 @@ int main (int argc, char **argv)
   int  i=0;
   char start_msg[500];
   char end_msg[500];
-  char pc_identifier[20];
+  char pc_identifier[20]="";
 #ifdef RUNTIME
   //clock_t begin, end;
   double time_spent;
@@ -56,7 +56,7 @@ int main (int argc, char **argv)
               exit(EXIT_FAILURE);
           }
           if (0 == strcmp(ifa->ifa_name, "enp0s31f6")){
-              pc_identifier = host + strlen(host) - 2;
+              strcat(pc_identifier,host + strlen(host) - 2);
               break;
           }
       }
