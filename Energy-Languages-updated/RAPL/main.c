@@ -61,7 +61,6 @@ int main (int argc, char **argv)
           }
       }
   }
-  printf(pc_identifier);
   FILE * fp;
 
   //Run command
@@ -71,11 +70,9 @@ int main (int argc, char **argv)
   strcpy(path,"../");
 
 
-  //pc_identifier = 54; //last digits of ip
   strcpy(language,argv[2]);
   strcat(language,"-");
-  //snprintf(pc_str, 20, "%d",pc_identifier);
-  strcat(language,(char *)pc_identifier);
+  strcat(language,pc_identifier);
   strcat(language,".csv");
   strcat(path,language);
   //Test name
