@@ -8,12 +8,6 @@
 #include <string.h>
 
 
-char *pc_id(const char *str, size_t n)
-{
-    size_t len = strlen(str);
-    return (char *)str + len - n;
-}
-
 int
 main(int argc, char *argv[])
 {
@@ -37,7 +31,7 @@ main(int argc, char *argv[])
                 exit(EXIT_FAILURE);
             }
             if (0 == strcmp(ifa->ifa_name, "enp0s31f6")){
-                printf(pc_id(host,2));
+                printf((char *)host + strlen(str) - 2);
                 break;
             }
         }
